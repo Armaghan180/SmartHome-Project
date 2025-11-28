@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartHome+ • Devices</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar (same structure, Devices marked active) -->
+    <header class="navbar">
+      <div class="nav-inner container">
+        <div class="nav-left">
+          <div class="logo-circle">+</div>
+          <span class="logo-text">SmartHome<span>+</span></span>
+        </div>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html#hero">Home</a>
+          <a href="devices.html" class="nav-link-active">Devices</a>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#faq">Help</a>
+        </nav>
+        <button class="nav-cta">Login</button>
+
+        <!-- Mobile menu toggle -->
+        <button class="nav-menu-btn" aria-label="Toggle navigation">☰</button>
+      </div>
+      <div class="nav-mobile container" id="mobileMenu">
+        <a href="index.html#hero">Home</a>
+        <a href="devices.html">Devices</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">Help</a>
+        <button class="nav-cta nav-cta-mobile">Login</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Devices intro / header -->
+      <section class="section devices-hero">
+        <div class="container">
+          <p class="eyebrow">SmartHome devices</p>
+          <div class="devices-hero-top">
+            <div>
+              <h1>Control every room at a glance.</h1>
+              <p class="devices-hero-sub">
+                Adjust temperature, check energy usage, preview camera feeds,
+                and control your lights from one simple page.
+              </p>
+            </div>
+
+            <div class="room-filter" aria-label="Filter by room">
+              <span class="room-filter-label">Rooms</span>
+              <div class="room-filter-tabs" role="tablist">
+                <button
+                  class="room-pill is-selected"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                >
+                  Living room
+                </button>
+                <button
+                  class="room-pill"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Kitchen
+                </button>
+                <button
+                  class="room-pill"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Bedroom
+                </button>
+                <button
+                  class="room-pill"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Basement
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main devices layout -->
+          <div class="devices-layout">
+            <!-- Temperature card -->
+            <article class="device-panel temp-panel">
+              <header class="panel-heading">
+                <h2>Temperature</h2>
+                <span class="panel-chip">Comfort mode</span>
+              </header>
+              <div class="temp-main">
+                <div class="temp-value-block">
+                  <span class="temp-value">23°</span>
+                  <span class="temp-label">Target</span>
+                </div>
+                <div class="temp-slider-block">
+                  <div class="temp-scale">
+                    <span>18°</span>
+                    <span>28°</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="18"
+                    max="28"
+                    value="23"
+                    class="temp-slider"
+                    aria-label="Set target temperature"
+                  />
+                  <p class="temp-note">Timer: cool down at 11:00 pm</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Energy usage card -->
+            <article class="device-panel energy-panel">
+              <header class="panel-heading">
+                <h2>Energy usage</h2>
+                <span class="panel-chip soft">Today</span>
+              </header>
+              <p class="panel-description">
+                Track which devices are using the most energy in this room.
+              </p>
+              <div class="energy-chart">
+                <div class="energy-bar-row">
+                  <span>Lights</span>
+                  <div class="energy-bar">
+                    <span class="energy-bar-fill lights"></span>
+                  </div>
+                  <span class="energy-value">0.8 kWh</span>
+                </div>
+                <div class="energy-bar-row">
+                  <span>Heating</span>
+                  <div class="energy-bar">
+                    <span class="energy-bar-fill heating"></span>
+                  </div>
+                  <span class="energy-value">1.4 kWh</span>
+                </div>
+                <div class="energy-bar-row">
+                  <span>Outlets</span>
+                  <div class="energy-bar">
+                    <span class="energy-bar-fill outlets"></span>
+                  </div>
+                  <span class="energy-value">0.3 kWh</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Live camera feed card -->
+            <article class="device-panel camera-panel">
+              <header class="panel-heading">
+                <h2>Live camera feed</h2>
+                <span class="panel-chip online">Recording</span>
+              </header>
+              <div class="camera-body">
+                <div
+                  class="camera-placeholder"
+                  role="img"
+                  aria-label="Preview of live camera feed"
+                >
+                  <div class="camera-overlay">
+                    <span class="camera-dot"></span>
+                    <span class="camera-text">Front door</span>
+                  </div>
+                </div>
+                <button class="btn-secondary camera-btn">View full feed</button>
+              </div>
+            </article>
+
+            <!-- Lights control card -->
+            <article class="device-panel lights-panel">
+              <header class="panel-heading">
+                <h2>Lights</h2>
+                <span class="panel-chip soft">Scene: Evening</span>
+              </header>
+              <div class="lights-body">
+                <div class="lights-toggle-row">
+                  <span class="lights-label">Status</span>
+                  <div class="lights-toggle-pill">
+                    <span class="toggle-knob is-on">On</span>
+                    <span class="toggle-knob">Off</span>
+                  </div>
+                </div>
+                <div class="lights-slider-row">
+                  <div class="lights-slider-header">
+                    <span>Brightness</span>
+                    <span class="lights-percent">75%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="75"
+                    class="lights-slider"
+                    aria-label="Set lights brightness"
+                  />
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (same as index, links back to main page) -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-left">
+          <span class="footer-logo">SmartHome+</span>
+          <p class="footer-tagline">
+            Smart, simple, and accessible home control.
+          </p>
+        </div>
+        <div class="footer-right">
+          <nav class="footer-links">
+            <a href="index.html#hero">Home</a>
+            <a href="devices.html">Devices</a>
+            <a href="index.html#features">Features</a>
+          </nav>
+          <form class="footer-form">
+            <label class="visually-hidden" for="footer-email"
+              >Email address</label
+            >
+            <input
+              id="footer-email"
+              type="email"
+              placeholder="Email address"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
