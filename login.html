@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartHome+ • Login</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="login-body">
+    <!-- Navbar (same structure as index.html) -->
+    <header class="navbar">
+      <div class="nav-inner container">
+        <div class="nav-left">
+          <div class="logo-circle">+</div>
+          <span class="logo-text">SmartHome<span>+</span></span>
+        </div>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="devices.html">Devices</a>
+          <a href="index.html#faq">Help</a>
+        </nav>
+
+        <!-- Desktop CTA -->
+        <button
+          class="nav-cta"
+          type="button"
+          onclick="window.location.href='login.html'"
+        >
+          Login
+        </button>
+
+        <!-- Mobile menu toggle -->
+        <button class="nav-menu-btn" aria-label="Toggle navigation">☰</button>
+      </div>
+
+      <!-- Mobile nav -->
+      <div class="nav-mobile container" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="devices.html">Devices</a>
+        <a href="index.html#features">Features</a>
+        <a href="login.html">Login</a>
+        <button
+          class="nav-cta nav-cta-mobile"
+          type="button"
+          onclick="window.location.href='login.html'"
+        >
+          Login
+        </button>
+      </div>
+    </header>
+
+    <!-- Login content -->
+    <main class="login-wrapper">
+      <div class="login-card">
+        <h1>Welcome back</h1>
+        <p class="login-subtitle">
+          Sign in to access and manage your smart home.
+        </p>
+
+        <form class="login-form">
+          <label for="login-email">Email</label>
+          <input
+            id="login-email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          />
+
+          <label for="login-password">Password</label>
+          <input
+            id="login-password"
+            type="password"
+            placeholder="••••••••"
+            required
+          />
+
+          <button type="submit" class="btn-primary login-btn">Login</button>
+        </form>
+
+        <p class="login-footer-text">
+          Don’t have an account?
+          <a href="#" class="login-link">Create one</a>
+        </p>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

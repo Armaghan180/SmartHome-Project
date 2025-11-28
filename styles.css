@@ -237,9 +237,7 @@ img {
   color: var(--text-muted);
 }
 
-/* Hero dashboard card */
-
-/* Hero right panel (no image) */
+/* Hero right panel */
 
 .hero-panel {
   border-radius: 24px;
@@ -470,44 +468,6 @@ img {
 .section-header p {
   color: var(--text-muted);
   font-size: 0.95rem;
-}
-
-/* Feature grid */
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.feature-card {
-  background-color: #ffffff;
-  border-radius: var(--radius-lg);
-  padding: 1.4rem 1.1rem;
-  border: 1px solid var(--border-soft);
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.feature-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-pill);
-  background-color: var(--bg-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.feature-card h3 {
-  font-size: 1rem;
-}
-
-.feature-card p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
 }
 
 /* Devices */
@@ -1189,4 +1149,77 @@ img {
   .lights-panel {
     grid-column: auto;
   }
+}
+
+/* LOGIN PAGE */
+
+.login-body {
+  background: var(--bg-soft);
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: min(420px, 100%);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.login-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.8rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  text-align: left;
+}
+
+.login-form label {
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.login-form input {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-soft);
+  font-size: 0.95rem;
+}
+
+.login-btn {
+  width: 100%;
+  margin-top: 0.6rem;
+  font-size: 1rem;
+}
+
+.login-footer-text {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.login-link {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
 }
