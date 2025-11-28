@@ -103,17 +103,21 @@
                 <h2>Temperature</h2>
                 <span class="panel-chip">Comfort mode</span>
               </header>
+
               <div class="temp-main">
                 <div class="temp-value-block">
-                  <span class="temp-value">23°</span>
+                  <span id="tempValueDisplay" class="temp-value">23°</span>
                   <span class="temp-label">Target</span>
                 </div>
+
                 <div class="temp-slider-block">
                   <div class="temp-scale">
                     <span>18°</span>
                     <span>28°</span>
                   </div>
+
                   <input
+                    id="tempSlider"
                     type="range"
                     min="18"
                     max="28"
@@ -121,6 +125,7 @@
                     class="temp-slider"
                     aria-label="Set target temperature"
                   />
+
                   <p class="temp-note">Timer: cool down at 11:00 pm</p>
                 </div>
               </div>
@@ -194,12 +199,14 @@
                     <span class="toggle-knob">Off</span>
                   </div>
                 </div>
+
                 <div class="lights-slider-row">
                   <div class="lights-slider-header">
                     <span>Brightness</span>
-                    <span class="lights-percent">75%</span>
+                    <span id="lightsPercent" class="lights-percent">75%</span>
                   </div>
                   <input
+                    id="lightsSlider"
                     type="range"
                     min="0"
                     max="100"

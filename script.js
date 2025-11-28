@@ -23,7 +23,6 @@ document.querySelectorAll(".device-card .device-toggle").forEach((btn) => {
     if (!statusSpan) return;
 
     if (isOn) {
-      // Very simple logic, you can customize text per device
       if (statusSpan.textContent.includes("Recording")) {
         statusSpan.textContent = "Recording";
         btn.textContent = "Pause feed";
@@ -63,3 +62,27 @@ document.querySelectorAll(".faq-item").forEach((faq) => {
     faq.classList.toggle("is-open");
   });
 });
+
+// Temperature slider
+const tempSlider = document.getElementById("tempSlider");
+const tempValueDisplay = document.getElementById("tempValueDisplay");
+
+if (tempSlider && tempValueDisplay) {
+  tempValueDisplay.textContent = `${tempSlider.value}°`;
+
+  tempSlider.addEventListener("input", () => {
+    tempValueDisplay.textContent = `${tempSlider.value}°`;
+  });
+}
+
+// Lights brightness slider
+const lightsSlider = document.getElementById("lightsSlider");
+const lightsPercent = document.getElementById("lightsPercent");
+
+if (lightsSlider && lightsPercent) {
+  lightsPercent.textContent = `${lightsSlider.value}%`;
+
+  lightsSlider.addEventListener("input", () => {
+    lightsPercent.textContent = `${lightsSlider.value}%`;
+  });
+}
