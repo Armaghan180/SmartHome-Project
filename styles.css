@@ -238,140 +238,86 @@ img {
 }
 
 /* Hero right panel */
-
-.hero-panel {
+/* HERO OVERVIEW CARD — FIXED SPACING */
+.hero-overview-card {
   border-radius: 24px;
   background: linear-gradient(145deg, #eaf4ff, #ffffff);
-  padding: 1.4rem 1.4rem 1.2rem;
+  padding: 1.8rem;
+  width: 100%;
+  max-width: 440px;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+.overview-top {
   display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
+  justify-content: flex-end;
+  margin-bottom: 1.2rem;
 }
 
-/* top: room tabs + chip */
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.room-tabs {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.room-tab {
-  border-radius: 999px;
-  border: 1px solid rgba(16, 19, 23, 0.06);
-  background-color: #ffffff;
-  padding: 0.25rem 0.7rem;
-  font-size: 0.75rem;
-  cursor: pointer;
-  color: var(--text-muted);
-}
-
-.room-tab.is-active {
-  border-color: var(--blue);
+.overview-status {
   background-color: #e0f3ff;
   color: var(--blue);
-}
-
-.panel-chip {
-  font-size: 0.7rem;
-  padding: 0.2rem 0.6rem;
+  padding: 0.32rem 0.9rem;
   border-radius: 999px;
-  background-color: #e0f3ff;
-  color: var(--blue);
-  white-space: nowrap;
+  font-size: 0.85rem;
 }
 
-/* middle: temp + sliders */
-
-.panel-main {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.3rem;
+.overview-main {
+  display: flex;
   align-items: center;
+  gap: 2rem; /* Increased spacing between circle & stats */
+  margin-bottom: 1.4rem;
 }
 
-.panel-temp {
-  width: 120px;
-  height: 120px;
+.overview-temp {
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   background: var(--blue);
   color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  align-items: center;
 }
 
-.panel-temp-value {
-  font-size: 1.9rem;
+.temp-value {
+  font-size: 2.1rem;
   font-weight: 600;
 }
 
-.panel-temp-label {
-  font-size: 0.8rem;
-  opacity: 0.9;
+.overview-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem; /* More even vertical spacing */
 }
 
-.panel-temp-sub {
-  margin-top: 0.15rem;
-  font-size: 0.75rem;
-  opacity: 0.9;
-}
-
-.panel-sliders {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.panel-row {
-  display: grid;
-  gap: 0.25rem;
-  font-size: 0.8rem;
-}
-
-.panel-row-top {
+.stat-row {
   display: flex;
   justify-content: space-between;
+  width: 180px; /* <— increased to properly align 18% */
+}
+
+.stat-row strong {
+  color: var(--blue);
+  margin-left: 0.5rem;
+}
+
+.overview-footer {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   color: var(--text-muted);
+  font-size: 0.85rem;
 }
 
-.panel-row-value {
-  font-weight: 500;
-  color: var(--text-main);
-}
-
-.panel-bar {
-  height: 8px;
+.sparkline {
+  flex: 1;
+  height: 22px;
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.7);
-  overflow: hidden;
-}
-
-.panel-bar-fill {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
   background: linear-gradient(90deg, var(--blue), var(--blue-light));
-}
-
-.panel-bar-fill.lights {
-  width: 70%;
-}
-
-.panel-bar-fill.heating {
-  width: 40%;
-}
-
-.panel-bar-fill.outlets {
-  width: 25%;
+  opacity: 0.6;
 }
 
 /* footer */
@@ -748,7 +694,11 @@ img {
   }
 
   .feature-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    justify-items: center; /* Centers each card */
+    justify-content: center; /* Centers the whole grid */
   }
 
   .device-grid {
@@ -1222,4 +1172,115 @@ img {
 
 .login-link:hover {
   text-decoration: underline;
+}
+
+/* CLIENT LOGO STRIP */
+.clients-section {
+  padding: 2.5rem 0;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.clients-inner {
+  text-align: center;
+}
+
+.clients-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+
+.clients-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  opacity: 0.7;
+}
+
+.clients-logos img {
+  height: 32px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.clients-logos img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 640px) {
+  .clients-logos {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+}
+
+/* Feature section */
+
+.feature-section {
+  background-color: #ffffff; /* keeps it clean between hero + other sections */
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  justify-items: center; /* Centers each card */
+  justify-content: center; /* Centers the whole grid */
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.1rem;
+  border: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--blue-light);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background-color: var(--bg-soft);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.feature-card h3 {
+  font-size: 1rem;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* keep your existing responsive rules – just making sure features collapse nicely */
+
+@media (max-width: 900px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
 }
