@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmartHome+ • Login</title>
+    <title>SmartHome+ • Sign up</title>
 
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,7 +15,7 @@
   </head>
 
   <body class="login-body">
-    <!-- Navbar (same structure as index.html) -->
+    <!-- Navbar (same structure as other pages) -->
     <header class="navbar">
       <div class="nav-inner container">
         <div class="nav-left">
@@ -29,7 +29,7 @@
           <a href="index.html#faq">Help</a>
         </nav>
 
-        <!-- Desktop CTA -->
+        <!-- Desktop CTA: go to Login -->
         <button
           class="nav-cta"
           type="button"
@@ -46,7 +46,7 @@
       <div class="nav-mobile container" id="mobileMenu">
         <a href="index.html">Home</a>
         <a href="devices.html">Devices</a>
-        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">Help</a>
         <a href="login.html">Login</a>
         <button
           class="nav-cta nav-cta-mobile"
@@ -58,41 +58,64 @@
       </div>
     </header>
 
-    <!-- Login content -->
+    <!-- Sign up content -->
     <main class="login-wrapper">
       <div class="login-card">
-        <h1>Welcome back</h1>
+        <h1>Create your account</h1>
         <p class="login-subtitle">
-          Sign in to access and manage your smart home.
+          Set up SmartHome+ and start managing your home.
         </p>
 
-        <!-- note extra class auth-login-form -->
-        <form class="login-form auth-login-form">
-          <label for="login-email">Email</label>
+        <!-- note extra class signup-form -->
+        <form class="login-form signup-form">
+          <label for="signup-name">Full name</label>
           <input
-            id="login-email"
+            id="signup-name"
+            type="text"
+            placeholder="Alex Johnson"
+            required
+          />
+
+          <label for="signup-email">Email</label>
+          <input
+            id="signup-email"
             type="email"
             placeholder="you@example.com"
             required
           />
 
-          <label for="login-password">Password</label>
+          <label for="signup-password">Password</label>
           <input
-            id="login-password"
+            id="signup-password"
             type="password"
             placeholder="••••••••"
             required
           />
 
-          <button type="submit" class="btn-primary login-btn">Login</button>
+          <label for="signup-confirm">Confirm password</label>
+          <input
+            id="signup-confirm"
+            type="password"
+            placeholder="••••••••"
+            required
+          />
+
+          <label class="signup-terms">
+            <input type="checkbox" required />
+            <span>I agree to the terms and privacy policy.</span>
+          </label>
+
+          <button type="submit" class="btn-primary login-btn">
+            Create account
+          </button>
 
           <!-- error message for auth -->
           <p class="auth-error" aria-live="polite"></p>
         </form>
 
         <p class="login-footer-text">
-          Don’t have an account?
-          <a href="signup.html" class="login-link">Create one</a>
+          Already have an account?
+          <a href="login.html" class="login-link">Log in</a>
         </p>
       </div>
     </main>

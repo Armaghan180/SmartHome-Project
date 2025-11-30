@@ -63,7 +63,7 @@ document.querySelectorAll(".faq-item").forEach((faq) => {
   });
 });
 
-// Temperature slider
+// Temperature slider (devices page)
 const tempSlider = document.getElementById("tempSlider");
 const tempValueDisplay = document.getElementById("tempValueDisplay");
 
@@ -75,7 +75,7 @@ if (tempSlider && tempValueDisplay) {
   });
 }
 
-// Lights brightness slider
+// Lights brightness slider (devices page)
 const lightsSlider = document.getElementById("lightsSlider");
 const lightsPercent = document.getElementById("lightsPercent");
 
@@ -86,3 +86,152 @@ if (lightsSlider && lightsPercent) {
     lightsPercent.textContent = `${lightsSlider.value}%`;
   });
 }
+
+/* ---------------- Simple auth using localStorage ---------------- */
+
+// Keys for storage
+const USERS_KEY = "smarthomeUsers";
+const CURRENT_USER_KEY = "smarthomeCurrentUser";
+
+function getUsers() {
+  try {
+    const raw = localStorage.getItem(USERS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    console.error("Error reading users from localStorage", e);
+    return [];
+  }
+}
+
+function saveUsers(users) {
+  try {
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  } catch (e) {
+    console.error("Error saving users to localStorage", e);
+  }
+}
+
+function setCurrentUser(user) {
+  localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+}
+
+function showAuthError(form, message) {
+  const errorEl = form.querySelector(".auth-error");
+  if (errorEl) {
+    errorEl.textContent = message;
+  } else {
+    alert(message);
+  }
+}
+
+/* --------- Sign up behaviour (signup.html) --------- */
+
+const signupForm = document.querySelector(".signup-form");
+
+if (signupForm) {
+  signupForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.querySelector("#signup-name").value.trim();
+    const email = document
+      .querySelector("#signup-email")
+      .value.trim()
+      .toLowerCase();
+    const password = document.querySelector("#signup-password").value;
+    const confirm = document.querySelector("#signup-confirm").value;
+
+    if (!name || !email || !password || !confirm) {
+      showAuthError(signupForm, "Please fill in all fields.");
+      return;
+    }
+
+    if (password !== confirm) {
+      showAuthError(signupForm, "Passwords do not match.");
+      return;
+    }
+
+    const users = getUsers();
+    if (users.some((u) => u.email === email)) {
+      showAuthError(signupForm, "An account with this email already exists.");
+      return;
+    }
+
+    const newUser = { name, email, password };
+    users.push(newUser);
+    saveUsers(users);
+    setCurrentUser({ name, email });
+
+    // For this project, go straight to devices page
+    window.location.href = "devices.html";
+  });
+}
+
+/* --------- Login behaviour (login.html) --------- */
+
+const loginForm = document.querySelector(".auth-login-form");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const email = document
+      .querySelector("#login-email")
+      .value.trim()
+      .toLowerCase();
+    const password = document.querySelector("#login-password").value;
+
+    const users = getUsers();
+    const match = users.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (!match) {
+      showAuthError(
+        loginForm,
+        "Incorrect email or password. Please try again."
+      );
+      return;
+    }
+
+    setCurrentUser({ name: match.name, email: match.email });
+
+    // Successful login -> go to devices
+    window.location.href = "devices.html";
+  });
+}
+
+/* ---------------- Show logged-in user in navbar ---------------- */
+
+function updateNavbarUserState() {
+  const userArea = document.querySelector(".nav-user-area");
+  if (!userArea) return;
+
+  const raw = localStorage.getItem("smarthomeCurrentUser");
+
+  // Nobody logged in → show Login button
+  if (!raw) {
+    userArea.innerHTML = `
+      <button class="nav-cta nav-login-btn" onclick="window.location.href='login.html'">
+        Login
+      </button>`;
+    return;
+  }
+
+  const user = JSON.parse(raw);
+  const firstName = user.name.split(" ")[0]; // Only show first name
+
+  userArea.innerHTML = `
+    <span class="nav-user-name">Hello, ${firstName}</span>
+    <button class="logout-btn">Logout</button>
+  `;
+
+  // Logout button
+  const logoutBtn = userArea.querySelector(".logout-btn");
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("smarthomeCurrentUser");
+    window.location.href = "index.html";
+  });
+}
+
+// Run immediately
+updateNavbarUserState();
